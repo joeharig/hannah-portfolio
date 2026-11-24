@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Pre-rendered flipbook pages: cache in the browser for a day, and serve a
+# cached copy while revalidating for up to a week after that.
+[[headers]]
+  for = "/pages/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
